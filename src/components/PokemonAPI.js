@@ -14,13 +14,17 @@ const PokemonAPI = (props) => {
     
     <div>
     <p>First {pokemon.length} pokemon</p>
+    <ul>
       {pokemon.length > 0 && pokemon.map((poke, index)=>{
         return (
           <>
-            <div key={index}>{poke.name}</div>
+            <li key={index}
+                style={{width:"fit-content", margin: "0 auto"}}
+                >{poke.name}</li>
           </>
         );
       })}
+      </ul>
     </div>
   );
 }
