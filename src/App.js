@@ -6,8 +6,8 @@ import PokemonAPI from './components/PokemonAPI';
 function App() {
   return (
     <div className="App">
-      <h1>check one two</h1>
-      <h2>is this thing on?</h2>
+      <h1>Pokemon API</h1>
+      
       {/* <Example /> */}
       <PokemonAPI />
     </div>
