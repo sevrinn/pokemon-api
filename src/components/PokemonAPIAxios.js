@@ -1,4 +1,4 @@
-
+import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import '../App.css';
 
@@ -6,15 +6,25 @@ const PokemonAPI = (props) => {
   const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon?limit=807&offset807')
-      .then(response => response.json())
-      .then(response => setPokemon(response.results))
+    axios.get('https://pokeapi.co/api/v2/pokemon?limit=807&offset807')
+      .then(result => setPokemon(result.data.results))
+      .catch(err => console.log(err))
   },[]);
     console.log(pokemon.length);
+    const pokemonSentenceStarter = () => {
+      if (pokemon.length === 1118) {
+        return "All";
+      } else {
+        return "First";
+      }
+    }
+
+    
   return(
     
     <div>
-    <p>First {pokemon.length} pokemon</p>
+    <h1>Pokemon API with Axios</h1>
+    <p>{pokemonSentenceStarter()} {pokemon.length} pokemon</p>
     <ul>
       {pokemon.length > 0 && pokemon.map((poke, index)=>{
         return (
